@@ -7,36 +7,10 @@
  */
 
 #include "../inc/ui/MainWindow.h"
-#include "../inc/utils/SettingsManager.h"
 #include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>
 #include <QDebug>
-
-/**
- * @brief 加载应用程序翻译
- * @param app QApplication实例
- */
-void loadTranslations(QApplication &app)
-{
-    SettingsManager &settings = SettingsManager::instance();
-    QString language = settings.getLanguage();
-    
-    QTranslator *qtTranslator = new QTranslator(&app);
-    QTranslator *appTranslator = new QTranslator(&app);
-    
-    // 加载Qt标准对话框翻译
-    QString qtTranslationsPath = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
-    if (qtTranslator->load("qt_" + language, qtTranslationsPath)) {
-        app.installTranslator(qtTranslator);
-    }
-    
-    // 加载应用程序翻译
-    QString appTranslationsPath = ":/translations";
-    if (appTranslator->load("calculator_" + language, appTranslationsPath)) {
-        app.installTranslator(appTranslator);
-    }
-}
 
 /**
  * @brief 设置应用程序属性
@@ -49,22 +23,19 @@ void setupApplication(QApplication &app)
     app.setApplicationVersion("1.0.0");
     app.setOrganizationName("QtCalculator");
     app.setOrganizationDomain("qtcalculator.example.com");
-    
-    // 设置应用程序属性
-    app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 }
 
 int main(int argc, char *argv[])
 {
+    // 在创建 QApplication 之前设置高DPI属性
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+
     // 创建应用程序实例
     QApplication app(argc, argv);
     
     // 设置应用程序
     setupApplication(app);
-    
-    // 加载翻译
-    loadTranslations(app);
     
     try {
         // 创建并显示主窗口

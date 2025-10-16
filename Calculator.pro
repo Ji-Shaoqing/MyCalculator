@@ -1,7 +1,7 @@
 # Qt项目配置
 QT += core gui widgets
 
-CONFIG += c++17
+CONFIG += c++11
 CONFIG += warn_on
 CONFIG += debug_and_release
 
@@ -13,21 +13,21 @@ VERSION = 1.0.0
 # 源代码路径
 SOURCES += \
     src/main.cpp \
-    src/core/calculatorengine.cpp \
-    src/ui/mainwindow.cpp \
-    src/ui/numpadbutton.cpp \
-    src/ui/displaypanel.cpp \
-    src/utils/settingsmanager.cpp
+    src/core/CalculatorEngine.cpp \
+    src/ui/MainWindow.cpp \
+    src/ui/NumPadButton.cpp \
+    src/ui/DisplayPanel.cpp \
+    src/utils/SettingsManager.cpp
 
 # 头文件路径
 HEADERS += \
-    include/core/calculatorengine.h \
-    include/core/calculationtypes.h \
-    include/ui/mainwindow.h \
-    include/ui/numpadbutton.h \
-    include/ui/displaypanel.h \
-    include/utils/settingsmanager.h \
-    include/utils/constants.h
+    inc/core/CalculatorEngine.h \
+    inc/core/CalculationTypes.h \
+    inc/ui/MainWindow.h \
+    inc/ui/NumPadButton.h \
+    inc/ui/DisplayPanel.h \
+    inc/utils/Constants.h \
+    inc/utils/SettingsManager.h
 
 # 资源文件
 RESOURCES += resources/calculator.qrc
