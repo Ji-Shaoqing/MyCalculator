@@ -1,5 +1,5 @@
 /**
- * @file constants.h
+ * @file Constants.h
  * @brief 应用程序常量定义
  * @author Jisq
  * @version 1.0

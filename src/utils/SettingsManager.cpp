@@ -1,3 +1,8 @@
+/**
+ * @file SettingsManager.cpp
+ * @brief 计算器设置实现
+ */
+
 #include "../../inc/utils/SettingsManager.h"
 
 namespace Calculator {

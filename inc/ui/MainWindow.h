@@ -1,3 +1,11 @@
+/**
+ * @file MainWindow.h
+ * @brief 计算器窗口功能
+ * @author Jisq
+ * @version 1.0
+ * @date 2025
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

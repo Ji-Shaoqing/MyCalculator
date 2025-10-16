@@ -1,3 +1,9 @@
+/**
+ * @file MainWindow.cpp
+ * @brief 窗口功能实现
+ */
+
+
 #include "../../inc/ui/MainWindow.h"
 #include "../../inc/utils/SettingsManager.h"
 #include <QApplication>

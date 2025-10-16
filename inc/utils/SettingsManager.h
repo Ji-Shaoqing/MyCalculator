@@ -1,3 +1,11 @@
+/**
+ * @file SettingsManager.h
+ * @brief 计算器设置
+ * @author Jisq
+ * @version 1.0
+ * @date 2025
+ */
+
 #ifndef SETTINGSMANAGER_H
 #define SETTINGSMANAGER_H
 
