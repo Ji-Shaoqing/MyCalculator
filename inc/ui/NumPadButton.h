@@ -9,7 +9,7 @@
 #ifndef NUMPADBUTTON_H
 #define NUMPADBUTTON_H
 
-#include "core/CalculationTypes.h"
+#include "../core/CalculationTypes.h"
 #include <QPushButton>
 #include <QPainter>
 

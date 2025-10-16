@@ -3,8 +3,8 @@
  * @brief 计算器核心引擎实现
  */
 
-#include "core/calculatorengine.h"
-#include "utils/constants.h"
+#include "../../inc/core/CalculatorEngine.h"
+#include "../../inc/utils/Constants.h"
 #include <cmath>
 #include <limits>
 

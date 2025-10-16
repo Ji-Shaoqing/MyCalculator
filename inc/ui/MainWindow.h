@@ -9,9 +9,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "core/CalculatorEngine.h"
-#include "ui/DisplayPanel.h"
-#include "ui/NumPadButton.h"
+#include "../core/CalculatorEngine.h"
+#include "DisplayPanel.h"
+#include "NumPadButton.h"
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QVBoxLayout>

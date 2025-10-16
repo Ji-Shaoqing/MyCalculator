@@ -9,7 +9,7 @@
 #ifndef CALCULATORENGINE_H
 #define CALCULATORENGINE_H
 
-#include "calculationtypes.h"
+#include "CalculationTypes.h"
 #include <QObject>
 #include <QString>
 

@@ -1,10 +1,10 @@
 /**
- * @file Settingsmanager.cpp
+ * @file SettingsManager.cpp
  * @brief 设置管理器实现
  */
 
-#include "utils/SettingsManager.h"
-#include "utils/Constants.h"
+#include "../../inc/utils/SettingsManager.h"
+#include "../../inc/utils/Constants.h"
 #include <QApplication>
 #include <QDir>
 

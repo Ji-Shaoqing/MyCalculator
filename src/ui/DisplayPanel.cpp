@@ -3,8 +3,8 @@
  * @brief 显示面板组件实现
  */
 
-#include "ui/displaypanel.h"
-#include "utils/Constants.h"
+#include "../../inc/ui/DisplayPanel.h"
+#include "../../inc/utils/Constants.h"
 #include <QKeyEvent>
 #include <QPainter>
 

@@ -3,9 +3,9 @@
  * @brief 计算器主窗口实现
  */
 
-#include "ui/MainWindow.h"
-#include "utils/Constants.h"
-#include "utils/SettingsManager.h"
+#include "../../inc/ui/MainWindow.h"
+#include "../../inc/utils/Constants.h"
+#include "../../inc/utils/SettingsManager.h"
 #include <QApplication>
 #include <QGridLayout>
 #include <QVBoxLayout>

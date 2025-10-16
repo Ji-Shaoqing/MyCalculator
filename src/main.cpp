@@ -6,8 +6,8 @@
  * @date 2025
  */
 
-#include "ui/Mainwindow.h"
-#include "utils/Settingsmanager.h"
+#include "../../inc/ui/Mainwindow.h"
+#include "../../inc/utils/Settingsmanager.h"
 #include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>

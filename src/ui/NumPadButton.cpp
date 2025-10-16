@@ -3,8 +3,8 @@
  * @brief 数字键盘按钮组件实现
  */
 
-#include "ui/NumPadButton.h"
-#include "utils/Constants.h"
+#include "../../inc/ui/NumPadButton.h"
+#include "../../inc/utils/Constants.h"
 #include <QMouseEvent>
 #include <QPainter>
 
