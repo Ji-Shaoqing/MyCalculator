@@ -1,0 +1,16 @@
+"filename", "language", "C++", "comment", "blank", "total"
+"/home/jisq/Calculator/inc/core/CalculationTypes.h", "C++", 44, 20, 11, 75
+"/home/jisq/Calculator/inc/core/CalculatorEngine.h", "C++", 40, 73, 25, 138
+"/home/jisq/Calculator/inc/ui/DisplayPanel.h", "C++", 26, 33, 14, 73
+"/home/jisq/Calculator/inc/ui/MainWindow.h", "C++", 41, 7, 12, 60
+"/home/jisq/Calculator/inc/ui/NumPadButton.h", "C++", 32, 42, 16, 90
+"/home/jisq/Calculator/inc/utils/Constants.h", "C++", 22, 15, 8, 45
+"/home/jisq/Calculator/inc/utils/SettingsManager.h", "C++", 28, 10, 15, 53
+"/home/jisq/Calculator/src/core/CalculatorEngine.cpp", "C++", 208, 5, 37, 250
+"/home/jisq/Calculator/src/main.cpp", "C++", 30, 17, 9, 56
+"/home/jisq/Calculator/src/ui/DisplayPanel.cpp", "C++", 67, 8, 15, 90
+"/home/jisq/Calculator/src/ui/MainWindow.cpp", "C++", 359, 32, 47, 438
+"/home/jisq/Calculator/src/ui/NumPadButton.cpp", "C++", 105, 9, 24, 138
+"/home/jisq/Calculator/src/utils/Constants.cpp", "C++", 4, 4, 4, 12
+"/home/jisq/Calculator/src/utils/SettingsManager.cpp", "C++", 62, 6, 14, 82
+"Total", "-", 1068, 281, 251, 1600
