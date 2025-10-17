@@ -17,8 +17,7 @@ CalculatorEngine::CalculatorEngine(QObject *parent)
     reset();
 }
 
-QString CalculatorEngine::getDisplayText() const
-{
+QString CalculatorEngine::getDisplayText() const {
     if (m_state.error != ErrorType::NoError) {
         switch (m_state.error) {
         case ErrorType::DivisionByZero:
@@ -41,8 +40,7 @@ QString CalculatorEngine::getDisplayText() const
     return m_currentInput.isEmpty() ? "0" : m_currentInput;
 }
 
-void CalculatorEngine::inputDigit(int digit)
-{
+void CalculatorEngine::inputDigit(int digit) {
     if (m_state.error != ErrorType::NoError) {
         reset();
     }
@@ -63,8 +61,7 @@ void CalculatorEngine::inputDigit(int digit)
     emit displayChanged(getDisplayText());
 }
 
-void CalculatorEngine::inputOperator(Operator op)
-{
+void CalculatorEngine::inputOperator(Operator op) {
     if (m_state.error != ErrorType::NoError) {
         return;
     }
@@ -82,8 +79,7 @@ void CalculatorEngine::inputOperator(Operator op)
     }
 }
 
-void CalculatorEngine::inputEquals()
-{
+void CalculatorEngine::inputEquals(){
     if (m_state.error != ErrorType::NoError || 
         m_state.pendingOperator == Operator::None) {
         return;
@@ -95,13 +91,12 @@ void CalculatorEngine::inputEquals()
     
     if (m_state.error == ErrorType::NoError) {
         m_state.pendingOperator = Operator::None;
-        m_state.waitingForOperand = true;
+        m_state.waitingForOperand = false;
         emit stateUpdated(m_state);
     }
 }
 
-void CalculatorEngine::inputDecimal()
-{
+void CalculatorEngine::inputDecimal() {
     if (m_state.error != ErrorType::NoError) {
         reset();
     }
@@ -119,8 +114,7 @@ void CalculatorEngine::inputDecimal()
     }
 }
 
-void CalculatorEngine::clearEntry()
-{
+void CalculatorEngine::clearEntry() {
     m_currentInput.clear();
     m_state.currentValue = 0.0;
     m_hasDecimal = false;
@@ -128,19 +122,18 @@ void CalculatorEngine::clearEntry()
     emit displayChanged(getDisplayText());
 }
 
-void CalculatorEngine::clearAll()
-{
+void CalculatorEngine::clearAll() {
     reset();
     emit displayChanged(getDisplayText());
     emit stateUpdated(m_state);
 }
 
-void CalculatorEngine::backspace()
-{
+void CalculatorEngine::backspace() {
     if (m_state.waitingForOperand || m_state.error != ErrorType::NoError) {
         return;
     }
     
+    // 删除最后一个字符
     if (m_currentInput.length() > 1) {
         if (m_currentInput.endsWith('.')) {
             m_hasDecimal = false;
@@ -156,8 +149,7 @@ void CalculatorEngine::backspace()
     emit displayChanged(getDisplayText());
 }
 
-void CalculatorEngine::changeSign()
-{
+void CalculatorEngine::changeSign() {
     if (m_state.error != ErrorType::NoError) {
         return;
     }
@@ -173,8 +165,7 @@ void CalculatorEngine::changeSign()
     emit displayChanged(getDisplayText());
 }
 
-void CalculatorEngine::calculate()
-{
+void CalculatorEngine::calculate() {
     double result = m_state.storedValue;
     double operand = m_state.currentValue;
     
@@ -204,28 +195,26 @@ void CalculatorEngine::calculate()
         return;
     }
     
+    // 思考：如果storedValue = result会发生什么情况？
     m_state.currentValue = result;
-    m_state.storedValue = result;
+    m_state.storedValue = 0.0;
     m_currentInput = formatNumber(result);
     m_state.waitingForOperand = true;
 }
 
-void CalculatorEngine::reset()
-{
+void CalculatorEngine::reset() {
     m_state = CalculatorState();
     m_currentInput.clear();
     m_hasDecimal = false;
 }
 
-void CalculatorEngine::setError(ErrorType error)
-{
+void CalculatorEngine::setError(ErrorType error) {
     m_state.error = error;
     emit errorOccurred(error);
     emit displayChanged(getDisplayText());
 }
 
-QString CalculatorEngine::formatNumber(double value) const
-{
+QString CalculatorEngine::formatNumber(double value) const {
     QString text = QString::number(value, 'g', Constants::MAX_DISPLAY_LENGTH);
     
     // 移除不必要的尾随零和小数点
@@ -241,8 +230,7 @@ QString CalculatorEngine::formatNumber(double value) const
     return text;
 }
 
-bool CalculatorEngine::checkOverflow(double value) const
-{
+bool CalculatorEngine::checkOverflow(double value) const{
     return std::isinf(value) || std::isnan(value) ||
            std::abs(value) > Constants::MAX_CALCULATION_VALUE;
 }

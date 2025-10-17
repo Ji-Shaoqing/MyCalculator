@@ -3,7 +3,7 @@
  * @brief 计算器显示面板组件
  * @author Jisq
  * @version 1.0
- * @date 2025
+ * @date 2025.10.16
  */
 
 #ifndef DISPLAYPANEL_H
@@ -17,7 +17,6 @@ namespace Calculator {
 /**
  * @class DisplayPanel
  * @brief 自定义显示面板组件
- * 
  * 负责显示计算器的输入和结果，支持错误状态显示和自定义绘制。
  */
 class DisplayPanel : public QLineEdit
@@ -33,39 +32,25 @@ public:
     void setErrorState(bool error);
     
 public slots:
-    /**
-     * @brief 更新显示内容
-     * @param text 显示文本
-     */
+    // 更新显示内容槽函数
     void updateDisplay(const QString &text);
     
-    /**
-     * @brief 清除显示内容
-     */
+    // 清除显示内容槽函数
     void clearDisplay();
 
 signals:
-    /**
-     * @brief 错误状态改变信号
-     * @param errorState 错误状态
-     */
+    // 错误状态改变信号
     void errorStateChanged(bool errorState);
 
 protected:
-    /**
-     * @brief 重写绘制事件
-     * @param event 绘制事件
-     */
+    // 重写绘制事件
     void paintEvent(QPaintEvent *event) override;
     
-    /**
-     * @brief 重写键盘事件
-     * @param event 键盘事件
-     */
+    // 重写键盘事件
     void keyPressEvent(QKeyEvent *event) override;
 
 private:
-    bool m_errorState;   ///< 错误状态标志
+    bool m_errorState;   // 错误状态标志
 };
 
 } // namespace Calculator

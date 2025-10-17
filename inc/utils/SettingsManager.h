@@ -20,8 +20,10 @@ class SettingsManager : public QObject
     Q_OBJECT
 
 public:
+    // 获取单例实例
     static SettingsManager& instance();
 
+    // 禁用拷贝构造和赋值操作
     SettingsManager(const SettingsManager&) = delete;
     SettingsManager& operator=(const SettingsManager&) = delete;
 

@@ -34,55 +34,34 @@ public:
     ButtonType buttonType() const { return m_buttonType; }
     void setButtonType(ButtonType type);
     
-    /**
-     * @brief 设置按钮对应的键盘快捷键
-     * @param key 键盘键值
-     */
+    // 设置按钮对应的键盘快捷键
     void setShortcutKey(int key);
 
 protected:
-    /**
-     * @brief 重写绘制事件
-     * @param event 绘制事件
-     */
+    // 重写绘制事件
     void paintEvent(QPaintEvent *event) override;
-    
-    /**
-     * @brief 重写鼠标按下事件
-     * @param event 鼠标事件
-     */
+
+    // 重写鼠标按下事件
     void mousePressEvent(QMouseEvent *event) override;
-    
-    /**
-     * @brief 重写鼠标释放事件
-     * @param event 鼠标事件
-     */
+
+    // 重写鼠标释放事件
     void mouseReleaseEvent(QMouseEvent *event) override;
-    
-    /**
-     * @brief 重写鼠标进入事件
-     * @param event 进入事件
-     */
+
+    // 重写鼠标进入事件
     void enterEvent(QEvent *event) override;
-    
-    /**
-     * @brief 重写鼠标离开事件
-     * @param event 离开事件
-     */
+
+    // 重写鼠标离开事件
     void leaveEvent(QEvent *event) override;
 
 signals:
-    /**
-     * @brief 按钮类型改变信号
-     * @param type 新的按钮类型
-     */
+    // 按钮类型改变信号
     void buttonTypeChanged(ButtonType type);
 
 private:
-    ButtonType m_buttonType;   ///< 按钮类型
-    bool m_isPressed;          ///< 按下状态
-    bool m_isHovered;          ///< 悬停状态
-    int m_shortcutKey;         ///< 快捷键
+    ButtonType m_buttonType;   // 按钮类型
+    bool m_isPressed;          // 按下状态
+    bool m_isHovered;          // 悬停状态
+    int m_shortcutKey;         // 快捷键
 };
 
 } // namespace Calculator

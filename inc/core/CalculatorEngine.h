@@ -3,7 +3,7 @@
  * @brief 计算器核心引擎
  * @author Jisq
  * @version 1.0
- * @date 2025
+ * @date 2025.10.16
  */
 
 #ifndef CALCULATORENGINE_H
@@ -18,7 +18,6 @@ namespace Calculator {
 /**
  * @class CalculatorEngine
  * @brief 计算器核心逻辑引擎
- * 
  * 负责处理所有计算逻辑，包括四则运算、错误处理、状态管理等。
  * 采用MVC模式，与界面层完全分离。
  */
@@ -35,102 +34,60 @@ public:
     bool hasError() const { return m_state.error != ErrorType::NoError; }
 
 public slots:
-    /**
-     * @brief 处理数字输入
-     * @param digit 输入的数字 (0-9)
-     */
+    // 处理数字输入槽函数
     void inputDigit(int digit);
     
-    /**
-     * @brief 处理运算符输入
-     * @param op 运算符类型
-     */
+    // 处理运算符输入槽函数
     void inputOperator(Operator op);
     
-    /**
-     * @brief 处理等号输入
-     */
+    // 处理等号输入槽函数
     void inputEquals();
     
-    /**
-     * @brief 处理小数点输入
-     */
+    // 处理小数点输入槽函数
     void inputDecimal();
     
-    /**
-     * @brief 清除当前输入
-     */
+    // 清除当前输入槽函数
     void clearEntry();
     
-    /**
-     * @brief 全部清除
-     */
+    // 全部清除槽函数
     void clearAll();
     
-    /**
-     * @brief 退格操作
-     */
+    // 退格操作槽函数
     void backspace();
     
-    /**
-     * @brief 改变正负号
-     */
+    // 改变正负号槽函数
     void changeSign();
 
 signals:
-    /**
-     * @brief 显示内容改变信号
-     * @param displayText 显示文本
-     */
+    // 显示内容改变信号
     void displayChanged(const QString &displayText);
     
-    /**
-     * @brief 错误状态改变信号
-     * @param errorType 错误类型
-     */
+    // 错误发生信号
     void errorOccurred(ErrorType errorType);
     
-    /**
-     * @brief 状态更新信号
-     * @param state 当前计算器状态
-     */
+    // 状态更新信号
     void stateUpdated(const CalculatorState &state);
 
 private:
-    /**
-     * @brief 执行计算
-     */
+    // 执行计算
     void calculate();
     
-    /**
-     * @brief 重置计算器状态
-     */
+    // 重置计算器状态
     void reset();
     
-    /**
-     * @brief 设置错误状态
-     * @param error 错误类型
-     */
+    // 设置错误状态
     void setError(ErrorType error);
     
-    /**
-     * @brief 格式化数字显示
-     * @param value 数值
-     * @return 格式化后的字符串
-     */
+    // 格式化数字为字符串
     QString formatNumber(double value) const;
     
-    /**
-     * @brief 检查数值是否溢出
-     * @param value 待检查的数值
-     * @return 是否溢出
-     */
+    // 检查是否溢出
     bool checkOverflow(double value) const;
 
 private:
-    CalculatorState m_state;        ///< 计算器状态
-    QString m_currentInput;         ///< 当前输入字符串
-    bool m_hasDecimal;              ///< 是否已输入小数点
+    CalculatorState m_state;        // 计算器状态
+    QString m_currentInput;         // 当前输入字符串
+    bool m_hasDecimal;              // 是否已输入小数点
 };
 
 } // namespace Calculator
