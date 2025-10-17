@@ -124,8 +124,8 @@ void CalculatorEngine::clearEntry() {
 
 void CalculatorEngine::clearAll() {
     reset();
-    emit displayChanged(getDisplayText());
     emit stateUpdated(m_state);
+    emit displayChanged(getDisplayText());
 }
 
 void CalculatorEngine::backspace() {
@@ -206,6 +206,7 @@ void CalculatorEngine::reset() {
     m_state = CalculatorState();
     m_currentInput.clear();
     m_hasDecimal = false;
+    emit stateUpdated(m_state);
 }
 
 void CalculatorEngine::setError(ErrorType error) {

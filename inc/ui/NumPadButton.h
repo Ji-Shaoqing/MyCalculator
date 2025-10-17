@@ -21,8 +21,7 @@ namespace Calculator {
  * 
  * 支持不同类型的按钮样式和动画效果，提供更好的用户体验。
  */
-class NumPadButton : public QPushButton
-{
+class NumPadButton : public QPushButton {
     Q_OBJECT
     Q_PROPERTY(ButtonType buttonType READ buttonType WRITE setButtonType NOTIFY buttonTypeChanged)
 

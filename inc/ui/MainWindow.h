@@ -11,6 +11,7 @@
 
 #include "../../inc/core/CalculatorEngine.h"
 #include "../../inc/utils/SettingsManager.h"
+#include "DisplayPanel.h"
 #include <QMainWindow>
 #include <QLineEdit>
 #include <QPushButton>
@@ -23,8 +24,7 @@ namespace Calculator {
  * @brief 计算器主窗口类
  * 负责管理计算器的UI组件和用户交互逻辑。
  */
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
@@ -60,6 +60,8 @@ private slots:
     // 处理计算错误槽函数
     void onErrorOccurred(ErrorType errorType);
 
+    void onEngineStateUpdated(const CalculatorState& state);
+
 private:
     // 初始化UI组件
     void setupUI();
@@ -78,9 +80,9 @@ private:
     void setupButtonStyles();
 
 private:
-    QWidget *m_centralWidget; // 中央窗口部件
-    QLineEdit *m_displayPanel; // 显示面板
-    CalculatorEngine *m_engine; // 计算器引擎
+    QWidget *m_centralWidget;              // 中央窗口部件
+    DisplayPanel *m_displayPanel;             // 显示面板
+    CalculatorEngine *m_engine;            // 计算器引擎
     QMap<QString, QPushButton*> m_buttons; // 按钮映射
 };
 

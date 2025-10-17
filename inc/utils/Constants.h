@@ -1,6 +1,6 @@
 /**
  * @file Constants.h
- * @brief 应用程序常量定义
+ * @brief 应用程序常量
  * @author Jisq
  * @version 1.0
  * @date 2025

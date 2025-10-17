@@ -7,8 +7,7 @@
 
 namespace Calculator {
 
-SettingsManager& SettingsManager::instance()
-{
+SettingsManager& SettingsManager::instance() {
     static SettingsManager instance;
     return instance;
 }
@@ -32,8 +31,7 @@ SettingsManager::SettingsManager(QObject *parent)
     }
 }
 
-QString SettingsManager::getStylePreference() const
-{
+QString SettingsManager::getStylePreference() const {
     return m_settings.value("style/preference", ":/styles/default.qss").toString();
 }
 
@@ -44,35 +42,29 @@ void SettingsManager::setStylePreference(const QString &style)
     }
 }
 
-QByteArray SettingsManager::getWindowGeometry() const
-{
+QByteArray SettingsManager::getWindowGeometry() const {
     return m_settings.value("window/geometry").toByteArray();
 }
 
-void SettingsManager::setWindowGeometry(const QByteArray &geometry)
-{
+void SettingsManager::setWindowGeometry(const QByteArray &geometry) {
     m_settings.setValue("window/geometry", geometry);
 }
 
-bool SettingsManager::getSoundEnabled() const
-{
+bool SettingsManager::getSoundEnabled() const {
     return m_settings.value("sound/enabled", false).toBool();
 }
 
-void SettingsManager::setSoundEnabled(bool enabled)
-{
+void SettingsManager::setSoundEnabled(bool enabled) {
     if (getSoundEnabled() != enabled) {
         m_settings.setValue("sound/enabled", enabled);
     }
 }
 
-QString SettingsManager::getLanguage() const
-{
+QString SettingsManager::getLanguage() const {
     return m_settings.value("language/current", "zh_CN").toString();
 }
 
-void SettingsManager::setLanguage(const QString &language)
-{
+void SettingsManager::setLanguage(const QString &language) {
     if (getLanguage() != language) {
         m_settings.setValue("language/current", language);
     }

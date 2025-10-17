@@ -1,6 +1,6 @@
 /**
  * @file NumPadButton.cpp
- * @brief 数字键盘按钮组件实现
+ * @brief 计算器数字键盘按钮组件实现
  */
 
 #include "../../inc/ui/NumPadButton.h"
@@ -36,8 +36,7 @@ NumPadButton::NumPadButton(const QString &text, QWidget *parent)
     setText(text);
 }
 
-void NumPadButton::setButtonType(ButtonType type)
-{
+void NumPadButton::setButtonType(ButtonType type) {
     if (m_buttonType != type) {
         m_buttonType = type;
         update();
@@ -45,13 +44,11 @@ void NumPadButton::setButtonType(ButtonType type)
     }
 }
 
-void NumPadButton::setShortcutKey(int key)
-{
+void NumPadButton::setShortcutKey(int key) {
     m_shortcutKey = key;
 }
 
-void NumPadButton::paintEvent(QPaintEvent *event)
-{
+void NumPadButton::paintEvent(QPaintEvent *event) {
     Q_UNUSED(event);
     
     QPainter painter(this);
@@ -107,29 +104,25 @@ void NumPadButton::paintEvent(QPaintEvent *event)
     painter.drawText(rect, Qt::AlignCenter, text());
 }
 
-void NumPadButton::mousePressEvent(QMouseEvent *event)
-{
+void NumPadButton::mousePressEvent(QMouseEvent *event) {
     m_isPressed = true;
     update();
     QPushButton::mousePressEvent(event);
 }
 
-void NumPadButton::mouseReleaseEvent(QMouseEvent *event)
-{
+void NumPadButton::mouseReleaseEvent(QMouseEvent *event) {
     m_isPressed = false;
     update();
     QPushButton::mouseReleaseEvent(event);
 }
 
-void NumPadButton::enterEvent(QEvent *event)
-{
+void NumPadButton::enterEvent(QEvent *event) {
     m_isHovered = true;
     update();
     QPushButton::enterEvent(event);
 }
 
-void NumPadButton::leaveEvent(QEvent *event)
-{
+void NumPadButton::leaveEvent(QEvent *event) {
     m_isHovered = false;
     update();
     QPushButton::leaveEvent(event);

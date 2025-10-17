@@ -1,6 +1,6 @@
 /**
  * @file MainWindow.cpp
- * @brief 窗口功能实现
+ * @brief 计算器窗口功能实现
  */
 
 
@@ -30,12 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("计算器");
 }
 
-MainWindow::~MainWindow()
-{
-}
+MainWindow::~MainWindow() {}
 
-void MainWindow::setupUI()
-{
+void MainWindow::setupUI() {
     m_centralWidget = new QWidget(this);
     m_centralWidget->setObjectName("centralWidget");
     setCentralWidget(m_centralWidget);
@@ -45,7 +42,7 @@ void MainWindow::setupUI()
     mainLayout->setContentsMargins(8, 8, 8, 8);
 
     // 显示面板
-    m_displayPanel = new QLineEdit();
+    m_displayPanel = new DisplayPanel();
     m_displayPanel->setObjectName("displayPanel");
     m_displayPanel->setReadOnly(true);
     m_displayPanel->setAlignment(Qt::AlignRight);
@@ -117,8 +114,7 @@ void MainWindow::setupUI()
     setupButtonStyles();
 }
 
-void MainWindow::setupButtonStyles()
-{
+void MainWindow::setupButtonStyles() {
     // 为不同类型的按钮设置不同的样式
     for (auto it = m_buttons.begin(); it != m_buttons.end(); ++it) {
         QPushButton *button = it.value();
@@ -202,14 +198,16 @@ void MainWindow::setupButtonStyles()
     }
 }
 
-void MainWindow::setupConnections()
-{
+void MainWindow::setupConnections() {
     // 连接计算引擎
     connect(m_engine, &CalculatorEngine::displayChanged,
             m_displayPanel, &QLineEdit::setText);
     connect(m_engine, &CalculatorEngine::errorOccurred,
             this, &MainWindow::onErrorOccurred);
-
+    
+    connect(m_engine, &CalculatorEngine::stateUpdated,
+            this, &MainWindow::onEngineStateUpdated);
+    
     // 连接数字按钮
     for (int i = 0; i <= 9; ++i) {
         QString digit = QString::number(i);
@@ -235,8 +233,7 @@ void MainWindow::setupConnections()
     m_displayPanel->setText(m_engine->getDisplayText());
 }
 
-void MainWindow::loadStyleSheet()
-{
+void MainWindow::loadStyleSheet() {
     SettingsManager &settings = SettingsManager::instance();
     QString stylePath = settings.getStylePreference();
 
@@ -277,8 +274,7 @@ void MainWindow::loadStyleSheet()
     }
 }
 
-void MainWindow::restoreWindowState()
-{
+void MainWindow::restoreWindowState() {
     SettingsManager &settings = SettingsManager::instance();
     QByteArray geometry = settings.getWindowGeometry();
     if (!geometry.isEmpty()) {
@@ -291,21 +287,18 @@ void MainWindow::restoreWindowState()
     }
 }
 
-void MainWindow::saveWindowState()
-{
+void MainWindow::saveWindowState() {
     SettingsManager &settings = SettingsManager::instance();
     settings.setWindowGeometry(saveGeometry());
     qDebug() << "窗口状态保存成功";
 }
 
-void MainWindow::closeEvent(QCloseEvent *event)
-{
+void MainWindow::closeEvent(QCloseEvent *event) {
     saveWindowState();
     QMainWindow::closeEvent(event);
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *event)
-{
+void MainWindow::keyPressEvent(QKeyEvent *event) {
     QString keyText = event->text();
     int key = event->key();
 
@@ -364,8 +357,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     }
 }
 
-void MainWindow::onDigitClicked()
-{
+void MainWindow::onDigitClicked() {
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     if (button) {
         int digit = button->text().toInt();
@@ -374,8 +366,7 @@ void MainWindow::onDigitClicked()
     }
 }
 
-void MainWindow::onOperatorClicked()
-{
+void MainWindow::onOperatorClicked() {
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     if (button) {
         QString text = button->text();
@@ -393,8 +384,7 @@ void MainWindow::onOperatorClicked()
     }
 }
 
-void MainWindow::onFunctionClicked()
-{
+void MainWindow::onFunctionClicked() {
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     if (button) {
         QString text = button->text();
@@ -410,28 +400,28 @@ void MainWindow::onFunctionClicked()
     }
 }
 
-void MainWindow::onEqualsClicked()
-{
+void MainWindow::onEqualsClicked() {
     m_engine->inputEquals();
     m_displayPanel->setText(m_engine->getDisplayText());
 }
 
-void MainWindow::onDecimalClicked()
-{
+void MainWindow::onDecimalClicked() {
     m_engine->inputDecimal();
     m_displayPanel->setText(m_engine->getDisplayText());
 }
 
-void MainWindow::onDisplayChanged(const QString &text)
-{
+void MainWindow::onDisplayChanged(const QString &text) {
     Q_UNUSED(text);
 }
 
-void MainWindow::onErrorOccurred(ErrorType errorType)
-{
+void MainWindow::onErrorOccurred(ErrorType errorType) {
     Q_UNUSED(errorType);
     // 可以在这里添加错误状态显示
     m_displayPanel->setStyleSheet("color: red;");
+}
+
+void MainWindow::onEngineStateUpdated(const CalculatorState& state) {
+    m_displayPanel->setErrorState(state.error != ErrorType::NoError);
 }
 
 } // namespace Calculator

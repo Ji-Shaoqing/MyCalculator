@@ -19,8 +19,7 @@ namespace Calculator {
  * @brief 自定义显示面板组件
  * 负责显示计算器的输入和结果，支持错误状态显示和自定义绘制。
  */
-class DisplayPanel : public QLineEdit
-{
+class DisplayPanel : public QLineEdit {
     Q_OBJECT
     Q_PROPERTY(bool errorState READ errorState WRITE setErrorState NOTIFY errorStateChanged)
 
