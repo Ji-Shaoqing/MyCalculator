@@ -8,5 +8,6 @@
 namespace Calculator {
 
 const char* Constants::DEFAULT_STYLE = ":resources/styles/default.qss";
+const char* Constants::DARK_STYLE = "resources/styles/dark.qss";
 
 } // namespace Calculator

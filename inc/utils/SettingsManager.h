@@ -30,6 +30,7 @@ public:
     // 样式设置
     QString getStylePreference() const;
     void setStylePreference(const QString &style);
+    QStringList getAvailableThemes() const;
 
     // 窗口设置
     QByteArray getWindowGeometry() const;
@@ -41,6 +42,9 @@ public:
 
     QString getLanguage() const;
     void setLanguage(const QString &language);
+
+signals:
+    void themeChanged(const QString &newTheme);
 
 private:
     explicit SettingsManager(QObject *parent = nullptr);

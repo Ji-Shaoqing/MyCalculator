@@ -1,0 +1,185 @@
+/* 计算器深色主题样式表 */
+QMainWindow {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                                stop: 0 #1e1e1e, stop: 1 #2d2d2d);
+    color: #ffffff;
+}
+
+#centralWidget {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #2d2d2d, stop: 1 #1e1e1e);
+    border: 1px solid #444444;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+#displayPanel {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #2d2d2d, stop: 1 #1e1e1e);
+    border: 2px solid #555555;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 12px 16px;
+    min-height: 60px;
+    selection-background-color: #0078d7;
+}
+
+#displayPanel:focus {
+    border-color: #0078d7;
+}
+
+#displayPanel[errorState="true"] {
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+/* 数字按钮样式 */
+QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #404040, stop: 1 #333333);
+    border: 1px solid #555555;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 60px;
+    min-height: 48px;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #505050, stop: 1 #404040);
+    border: 1px solid #666666;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #606060, stop: 1 #505050);
+    border: 1px solid #777777;
+}
+
+/* 数字按钮特殊样式 */
+QPushButton:!operator:!equals:!function {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #4a4a4a, stop: 1 #3a3a3a);
+}
+
+QPushButton:!operator:!equals:!function:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #5a5a5a, stop: 1 #4a4a4a);
+}
+
+/* 运算符按钮样式 */
+QPushButton[text="+"],
+QPushButton[text="-"],
+QPushButton[text="×"],
+QPushButton[text="÷"] {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #ff9500, stop: 1 #e68500);
+    border: 1px solid #ff9500;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+QPushButton[text="+"]:hover,
+QPushButton[text="-"]:hover,
+QPushButton[text="×"]:hover,
+QPushButton[text="÷"]:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #ffaa33, stop: 1 #ff9500);
+    border: 1px solid #ffaa33;
+}
+
+QPushButton[text="+"]:pressed,
+QPushButton[text="-"]:pressed,
+QPushButton[text="×"]:pressed,
+QPushButton[text="÷"]:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #e68500, stop: 1 #cc7700);
+    border: 1px solid #e68500;
+}
+
+/* 等号按钮样式 */
+QPushButton[text="="] {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #0078d7, stop: 1 #0066b4);
+    border: 1px solid #0078d7;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+QPushButton[text="="]:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #1085e0, stop: 1 #0078d7);
+    border: 1px solid #1085e0;
+}
+
+QPushButton[text="="]:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #0066b4, stop: 1 #005599);
+    border: 1px solid #0066b4;
+}
+
+/* 功能按钮样式 */
+QPushButton[text="C"],
+QPushButton[text="CE"],
+QPushButton[text="⌫"] {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #6c757d, stop: 1 #5a6268);
+    border: 1px solid #6c757d;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+QPushButton[text="C"]:hover,
+QPushButton[text="CE"]:hover,
+QPushButton[text="⌫"]:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #7a8288, stop: 1 #6c757d);
+    border: 1px solid #7a8288;
+}
+
+QPushButton[text="C"]:pressed,
+QPushButton[text="CE"]:pressed,
+QPushButton[text="⌫"]:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #5a6268, stop: 1 #495057);
+    border: 1px solid #5a6268;
+}
+
+/* 小数点按钮 */
+QPushButton[text="."] {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #4a4a4a, stop: 1 #3a3a3a);
+    border: 1px solid #555555;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+QPushButton[text="."]:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #5a5a5a, stop: 1 #4a4a4a);
+}
+
+/* 按钮字体设置 */
+QPushButton {
+    font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+/* 数字按钮特殊字体 */
+QPushButton:!operator:!equals:!function {
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+}
+
+/* 禁用状态 */
+QPushButton:disabled {
+    background: #333333;
+    border: 1px solid #444444;
+    color: #666666;
+}

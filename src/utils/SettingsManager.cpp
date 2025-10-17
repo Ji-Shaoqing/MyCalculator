@@ -42,6 +42,10 @@ void SettingsManager::setStylePreference(const QString &style)
     }
 }
 
+QStringList SettingsManager::getAvailableThemes() const {
+    return { ":/styles/default.qss", ":/styles/dark.qss" };
+}
+
 QByteArray SettingsManager::getWindowGeometry() const {
     return m_settings.value("window/geometry").toByteArray();
 }

@@ -30,7 +30,7 @@ HEADERS += \
     inc/utils/SettingsManager.h
 
 # 资源文件
-RESOURCES += resources/calculator.qrc
+RESOURCES += calculator.qrc
 
 # 编译目录设置
 win32:CONFIG(release, debug|release) {
