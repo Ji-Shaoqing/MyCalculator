@@ -37,24 +37,6 @@ enum class ErrorType {
 };
 
 /**
- * @brief 计算器状态
- */
-struct CalculatorState {
-    double currentValue;    // 当前值
-    double storedValue;     // 存储值
-    Operator pendingOperator; // 待处理运算符
-    bool waitingForOperand; // 等待操作数输入
-    ErrorType error;        // 错误状态
-
-    CalculatorState() 
-        : currentValue(0.0)
-        , storedValue(0.0)
-        , pendingOperator(Operator::None)
-        , waitingForOperand(true)
-        , error(ErrorType::NoError) {}
-};
-
-/**
  * @brief 按钮类型
  */
 enum class ButtonType {
@@ -63,6 +45,24 @@ enum class ButtonType {
     Equals,     // 等号按钮 =
     Function,   // 功能按钮 CE C ⌫
     Decimal     // 小数点按钮 .
+};
+
+/**
+ * @brief 计算器状态
+ */
+struct CalculatorState {
+    double currentValue;      // 当前值
+    double storedValue;       // 存储值
+    Operator pendingOperator; // 待处理运算符
+    bool waitingForOperand;   // 等待操作数输入
+    ErrorType error;          // 错误状态
+
+    CalculatorState() 
+        : currentValue(0.0)
+        , storedValue(0.0)
+        , pendingOperator(Operator::None)
+        , waitingForOperand(true)
+        , error(ErrorType::NoError) {}
 };
 
 } // namespace Calculator

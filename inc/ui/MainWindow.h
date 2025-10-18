@@ -54,12 +54,13 @@ private slots:
     // 小数点按钮点击槽函数
     void onDecimalClicked();
     
-    // 清除按钮点击槽函数
+    // 显示内容改变槽函数
     void onDisplayChanged(const QString &text);
     
     // 处理计算错误槽函数
     void onErrorOccurred(ErrorType errorType);
 
+    // 处理计算器状态更新槽函数
     void onEngineStateUpdated(const CalculatorState& state);
 
 private:
@@ -81,9 +82,9 @@ private:
 
 private:
     QWidget *m_centralWidget;              // 中央窗口部件
-    DisplayPanel *m_displayPanel;             // 显示面板
+    DisplayPanel *m_displayPanel;             // 计算结果显示面板
     CalculatorEngine *m_engine;            // 计算器引擎
-    QMap<QString, QPushButton*> m_buttons; // 按钮映射
+    QMap<QString, QPushButton*> m_buttons; // 按钮映射表
 };
 
 }
